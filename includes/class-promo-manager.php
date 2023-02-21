@@ -157,6 +157,8 @@ class Promo_Manager {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		// $this->loader->add_action('init', $plugin_admin, 'lpd_promo_init');
+		
 	}
 
 	/**
@@ -172,6 +174,8 @@ class Promo_Manager {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+
 
 	}
 
@@ -213,6 +217,50 @@ class Promo_Manager {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	public function lpd_promo_init()
+	{
+		register_post_type('lpd_promo', array(
+			'labels' => array(
+				'name' => __('Promos'),
+				'singular_name' => __('Promo'),
+				'add_new' => __('Add New Promo'),
+				'add_new_item' => __('Add New Promo'),
+				'edit_item' => __('Edit Promo'),
+				'new_item' => __('Add New Promo'),
+				'view_item' => __('View Promo'),
+				'search_items' => __('Search Promos'),
+				'not_found' => __('No Promos found'),
+				'not_found_in_trash' => __('No Promos found in trash')
+			),
+			'public' => true,
+			'supports' => array('title', 'editor', 'thumbnail', 'revisions'),
+			'capability_type' => 'post',
+			'rewrite' => array("slug" => "promos"), // Permalinks format
+			'menu_position' => 5,
+			'has_archive' => true
+		));
+
+		register_taxonomy('lpd_promo_categories', 'lpd_promo', array(
+			'hierarchical' => true,
+			'labels' => array(
+				'name' => __('Promo Categories', 'taxonomy general name'),
+				'singular_name' => __('Promo Category', 'taxonomy singular name'),
+				'search_items' =>  __('Search Promo Categories'),
+				'all_items' => __('All Promo Categories'),
+				'parent_item' => __('Parent Promo Category'),
+				'parent_item_colon' => __('Parent Promo Category:'),
+				'edit_item' => __('Edit Promo Category'),
+				'update_item' => __('Update Promo Category'),
+				'add_new_item' => __('Add New Promo Category'),
+				'new_item_name' => __('New Promo Category Name'),
+				'menu_name' => __('Promo Categories'),
+			),
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => array('slug' => 'promos'),
+		));
 	}
 
 }

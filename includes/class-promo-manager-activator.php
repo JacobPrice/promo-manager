@@ -20,7 +20,8 @@
  * @subpackage Promo_Manager/includes
  * @author     LeadPoint Digital <jacob@leadpointdigital.com>
  */
-class Promo_Manager_Activator {
+class Promo_Manager_Activator
+{
 
 	/**
 	 * Short Description. (use period)
@@ -29,8 +30,7 @@ class Promo_Manager_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {
-
+	public static function activate()
+	{
 	}
-
 }
