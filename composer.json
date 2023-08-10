@@ -1,0 +1,19 @@
+{
+    "require-dev": {
+        "hellonico/timber-dump-extension": "^1.0"
+    },
+    "require": {
+        "timber/timber": "2.0.0-rc.1",
+        "boxybird/morph": "^0.3.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "LpdPromo\\": "src/"
+        }
+    }
+}
