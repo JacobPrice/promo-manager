@@ -17,7 +17,7 @@ class Promo
         // add_action('pre_get_posts', [__CLASS__, 'setOrder']);
     }
 
-    public function register() {
+    public static function register() {
         
     }
 

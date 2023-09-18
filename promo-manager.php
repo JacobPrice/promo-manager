@@ -15,23 +15,9 @@
  
 define('BB_MORPH_HASH_KEY','ej92WM8DyzhShaa4' );
 
-\LpdPromo\PostTypes\Promo::init();
-
-/**
- * activate the plugin
- */
-/**
- * When activating we should do these
- * - Register custom post type of lpd-promo from the Promo Class
- * - Register the menu page for the plugin
- */
-
-function activate() {
-  \LpdPromo\PostTypes\Promo::init();
-  \LpdPromo\Pages\Index::register_menu();
-  flush_rewrite_rules();
-}
-
-register_activation_hook( __FILE__, 'activate' );
+// register_activation_hook( __FILE__, '\\LpdPromo\\PromoManager::activate' );
 
 
+add_action( 'admin_notices', function() {
+  echo '<div class="notice notice-success is-dismissible"><p>Promo Manager activated</p></div>';
+});
