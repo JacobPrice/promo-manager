@@ -1,0 +1,23 @@
+{
+	"name": "lpd/og-plugin",
+	"description": "The core package for plugins made with the Og framework",
+	"type": "library",
+	"license": "MIT",
+    "version": "0.0.1",
+	"autoload": {
+	  "psr-4": {
+		"OgPlugin\\": "src/"
+	  }
+	},
+	"require": {
+		"hellonico/timber-dump-extension": "^1.0",
+		"symfony/console": "^6.3",
+		"timber/timber": "2.0.0-rc.1",
+		"twig/string-extra": "^3.6"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	}
+}

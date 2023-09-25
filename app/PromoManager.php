@@ -7,9 +7,9 @@ class PromoManager {
 
     }
 
-    public static function activate() {
+    public static function init() {
         \LpdPromo\PostTypes\Promo::init();
-        \LpdPromo\Pages\Index::register_menu();
+        \LpdPromo\Pages\Index::register_admin_menu();
         flush_rewrite_rules();
         add_option( 'activated_plugin', 'lpd-promo-manager' );
 

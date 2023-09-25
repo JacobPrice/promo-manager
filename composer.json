@@ -4,7 +4,8 @@
     },
     "require": {
         "timber/timber": "2.0.0-rc.1",
-        "boxybird/morph": "^0.3.1"
+        "boxybird/morph": "^0.3.1",
+        "lpd/og-plugin": "0.0.1"
     },
     "config": {
         "allow-plugins": {
@@ -13,8 +14,14 @@
     },
     "autoload": {
         "psr-4": {
-            "LpdPromo\\": "src/",
-            "Origins\\": "Origins/"
+            "LpdPromo\\": "app/",
+            "OgPlugin\\": "OgPlugin/"
+        }
+    },
+    "repositories": {
+        "og-plugin": {
+            "type": "path",
+            "url": "./og-plugin"
         }
     }
 }
