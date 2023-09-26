@@ -1,8 +1,9 @@
 <?php
 namespace LpdPromo\Models;
 
-use Carbon_Fields\Container;
+use Timber\Timber;
 use Carbon_Fields\Field;
+use Carbon_Fields\Container;
 
 
 class Promo
@@ -18,6 +19,11 @@ class Promo
         add_action('init', [__CLASS__, 'register_taxonomies']);
         add_filter('manage_lpd-promo_posts_columns', [__CLASS__, 'add_new_columns']);
         add_action('carbon_fields_register_fields', [__CLASS__, 'register_custom_fields']);
+        add_action('manage_lpd-promo_posts_custom_column', [__CLASS__, 'manage_custom_columns'], 10, 2);
+        add_action('wp', [__CLASS__, 'setup_schedule']);
+        add_action('lpd_check_expired_promos', [__CLASS__, 'handle_expired_promos']);
+
+
 
     }
 // NEED TO ADD HELP TEXT FOR THE CUSTOM FIELDS
@@ -27,10 +33,10 @@ class Promo
         Container::make('post_meta', 'Promo Settings')
             ->where('post_type', '=', 'lpd-promo')
             ->add_tab('Settings',[
-                Field::make('date_time', 'promo_start_date', 'Promo Start Date')
+                Field::make('date', 'promo_start_date', 'Promo Start Date')
                 ->set_attribute('placeholder', 'Please select the date and time')
                 ->set_width(50),
-                Field::make('date_time', 'promo_end_date', 'Promo Start Date')
+                Field::make('date', 'promo_end_date', 'Promo Start Date')
                     ->set_attribute('placeholder', 'Please select the date and time')
                     ->set_width(50),
                 Field::make('association', 'linked_category', 'Promo Category')
@@ -163,4 +169,112 @@ class Promo
         $new_columns['date'] = __('Date');
         return $new_columns;
     }
+    public static function is_promo_active($post_id) {
+        $start_date = carbon_get_post_meta($post_id, 'promo_start_date');
+        $end_date = carbon_get_post_meta($post_id, 'promo_end_date');
+        $now = new \DateTime();
+    
+        // Convert all times to the same format
+        $start_date = \DateTime::createFromFormat('Y-m-d', $start_date);
+        $end_date = \DateTime::createFromFormat('Y-m-d', $end_date);
+        
+        return ($now > $start_date && $now < $end_date);
+    }
+    public static function handle_expired_promos() {
+        $args = array(
+            'post_type' => self::POST_TYPE,
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+        $query = new \WP_Query($args);
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id = get_the_ID();
+                if (!self::is_promo_active($post_id)) {
+                    $post = get_post($post_id);
+                    $post->post_status = 'private';
+                    wp_update_post($post);
+                } else {
+                    $post = get_post($post_id);
+                    $post->post_status = 'publish';
+                    wp_update_post($post);
+                }
+            }
+            wp_reset_postdata();
+        }
+    }
+    public static function setup_schedule() {
+        if (!wp_next_scheduled('lpd_check_expired_promos')) {
+            wp_schedule_event(time(), 'hourly', 'lpd_check_expired_promos');
+        }
+    }
+    
+    public static function manage_custom_columns($column, $post_id) {
+        switch ($column) {
+            case 'status':
+            // if the time is between the start and end date then the status is active
+                $start_date = carbon_get_post_meta($post_id, 'promo_start_date');
+                $end_date = carbon_get_post_meta($post_id, 'promo_end_date');
+                $now = new \DateTime();
+                $now = $now->format('Y-m-d');
+
+                if ($now >= $start_date && $now <= $end_date) {
+                    echo 'Active';
+                } else if ($now < $start_date) {
+                    echo 'Pending';
+                } else {
+                    echo 'Expired';
+                }
+                break;
+            case 'start_date':
+                $start_date = carbon_get_post_meta($post_id, 'promo_start_date');
+                echo $start_date;
+                break;
+    
+            case 'end_date':
+                $end_date = carbon_get_post_meta($post_id, 'promo_end_date');
+                echo $end_date;
+                break;
+    
+            case 'promo_category':
+                $linked_categories = carbon_get_post_meta($post_id, 'linked_category');
+                if ($linked_categories) {
+                    $terms_list = [];
+                    foreach ($linked_categories as $term) {
+                        // get the term object
+                        $term_obj = get_term($term);
+                        // get the term name
+                        $term_name = $term_obj->name;
+                        // add to the terms list array
+                        array_push($terms_list, $term_name);
+                    }
+                    echo implode(', ', $terms_list);
+                } else {
+                    echo '—'; // dash if no categories are linked
+                }
+                break;
+    
+            case 'image':
+                $desktop_image_type = carbon_get_post_meta($post_id, 'desktop_promo_image_type');
+                if ($desktop_image_type === 'full') {
+                    $image_id = carbon_get_post_meta($post_id, 'full_desktop_promo_image');
+                } else if ($desktop_image_type === 'half') {
+                    $image_id = carbon_get_post_meta($post_id, 'half_desktop_promo_image');
+                } else {
+                    $image_id = carbon_get_post_meta($post_id, 'mobile_promo_image');
+                }
+                if ($image_id) {
+                    $image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
+                    echo '<img src="' . esc_url($image_src[0]) . '" style="max-width:60px;">';
+                } else {
+                    echo '—'; // dash if no image is set
+                }
+                break;
+    
+            default:
+                break;
+        }
+    }
+    
 }
