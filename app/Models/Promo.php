@@ -28,8 +28,10 @@ class Promo {
                     'not_found' => __('No promos found.'),
                     'not_found_in_trash' => __('No promos found in Trash.')
                 ],
+                'menu-slug' => 'lpd-promos',
                 'public' => true,
                 'has_archive' => true,
+                'show_in_menu' => 'lpd-promos',
                 'rewrite' => [
                     'slug' => 'promos'
                 ],

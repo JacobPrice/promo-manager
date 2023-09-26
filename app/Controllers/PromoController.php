@@ -19,11 +19,12 @@ class PromoController extends TimberController{
         $this->add('posts', $posts);
         
         $promo_table = new PromoTable();
+        $promo_table->prepare_items();
         ob_start();
         $promo_table->display();
-        ob_get_clean();
+      $html =   ob_get_clean();
        
-        $this->add('promo_table', $promo_table);
+        $this->add('promo_table', $html);
     }
 
 

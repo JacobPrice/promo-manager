@@ -5,7 +5,8 @@
     "require": {
         "timber/timber": "2.0.0-rc.1",
         "boxybird/morph": "^0.3.1",
-        "lpd/og-plugin": "0.0.1"
+        "lpd/og-plugin": "0.0.1",
+        "fakerphp/faker": "^1.23"
     },
     "config": {
         "allow-plugins": {
