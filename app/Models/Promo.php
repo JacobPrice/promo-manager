@@ -4,6 +4,8 @@ namespace LpdPromo\Models;
 use Timber\Timber;
 use Carbon_Fields\Field;
 use Carbon_Fields\Container;
+use Carbon_Fields\Block;
+use Detection\MobileDetect;
 
 
 class Promo
@@ -22,9 +24,22 @@ class Promo
         add_action('manage_lpd-promo_posts_custom_column', [__CLASS__, 'manage_custom_columns'], 10, 2);
         add_action('wp', [__CLASS__, 'setup_schedule']);
         add_action('lpd_check_expired_promos', [__CLASS__, 'handle_expired_promos']);
+        add_action('template_redirect', [ __CLASS__, 'check_promo_public_status' ] );
+        add_action('carbon_fields_register_fields', [__CLASS__, 'make_promo_block']);
 
 
-
+    }
+    public static function check_promo_public_status() {
+        if(is_singular(SELF::POST_TYPE)) {
+            $post_id = get_the_ID();
+            $promo_not_public = carbon_get_post_meta($post_id, 'promo_not_public');
+            if($promo_not_public) {
+                // Add noindex meta tag to prevent search engines from indexing the page
+                echo '<meta name="robots" content="noindex">';
+                wp_redirect( home_url() );
+                exit;
+            }
+        }
     }
 // NEED TO ADD HELP TEXT FOR THE CUSTOM FIELDS
 // ->set_help_text('This is the promo start date') as an example
@@ -33,10 +48,11 @@ class Promo
         Container::make('post_meta', 'Promo Settings')
             ->where('post_type', '=', 'lpd-promo')
             ->add_tab('Settings',[
+                Field::make('checkbox', 'promo_not_public', 'Disable Individual Promo'),
                 Field::make('date', 'promo_start_date', 'Promo Start Date')
                 ->set_attribute('placeholder', 'Please select the date and time')
                 ->set_width(50),
-                Field::make('date', 'promo_end_date', 'Promo Start Date')
+                Field::make('date', 'promo_end_date', 'Promo End Date')
                     ->set_attribute('placeholder', 'Please select the date and time')
                     ->set_width(50),
                 Field::make('association', 'linked_category', 'Promo Category')
@@ -173,12 +189,30 @@ class Promo
         $start_date = carbon_get_post_meta($post_id, 'promo_start_date');
         $end_date = carbon_get_post_meta($post_id, 'promo_end_date');
         $now = new \DateTime();
-    
-        // Convert all times to the same format
-        $start_date = \DateTime::createFromFormat('Y-m-d', $start_date);
-        $end_date = \DateTime::createFromFormat('Y-m-d', $end_date);
-        
-        return ($now > $start_date && $now < $end_date);
+        $now = $now->format('Y-m-d');
+
+        return ($now >= $start_date && $now <= $end_date);
+    }
+    public static function get_active_promos() {
+        $args = array(
+            'post_type' => self::POST_TYPE,
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+        $query = new \WP_Query($args);
+        $active_promos = [];
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id = get_the_ID();
+                if (self::is_promo_active($post_id)) {
+                    $active_promos[] = get_post($post_id);
+
+                }
+            }
+            wp_reset_postdata();
+        }
+        return $active_promos;
     }
     public static function handle_expired_promos() {
         $args = array(
@@ -209,7 +243,7 @@ class Promo
             wp_schedule_event(time(), 'hourly', 'lpd_check_expired_promos');
         }
     }
-    
+
     public static function manage_custom_columns($column, $post_id) {
         switch ($column) {
             case 'status':
@@ -271,5 +305,112 @@ class Promo
                 break;
         }
     }
-    
+    public static function make_promo_block() {
+        $terms = Timber::get_terms('promo_category', ['hide_empty' => false]);
+        $category_options = [];
+        foreach ($terms as $term) {
+            $category_options[$term->id] = str_replace('&amp;', '&', $term->name);
+        }
+        Block::make( __( 'Promo Block' ) )
+            ->set_description( 'A block that displays active promos' )
+            ->add_fields([
+                Field::make( 'select' , 'promo_layout', 'Promo Layout' )
+                    ->add_options( [
+                        'list' => 'List',
+                        'slider' => 'Slider',
+                    ])
+                    ->set_width( 50 ),
+                Field::make( 'select' , 'promo_type', 'Promo Type' )
+                    ->add_options( [
+                        'all' => 'All',
+                        'category' => 'Category',
+                    ])
+                    ->set_width( 50 ),
+                Field::make( 'select' , 'promo_category', 'Promo Category' )
+                    ->add_options(
+                    // use $terms to make the keys and values
+                        $category_options
+                    )
+                    ->set_width( 50 )
+                    ->set_conditional_logic( [
+                        [
+                            'field' => 'promo_type',
+                            'value' => 'category',
+                        ],
+                    ])
+            ])
+            ->set_icon( 'megaphone' )
+            ->set_mode('preview')
+            ->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
+            $promos = SELF::get_active_promos();
+
+            // if ($fields['promo_type'] === 'category') {
+            //     $promos = array_filter($promos, function($promo) use ($fields) {
+            //         $promo_category = get_the_terms($promo->ID, 'promo_category');
+            //         $promo_category = array_shift($promo_category);
+            //         return $promo_category->term_id === $fields['promo_category'];
+            //     });
+            // }
+
+
+
+
+            // Attach the data to each promo
+            foreach ($promos as $promo) {
+                $promo->promo_title = carbon_get_post_meta($promo->ID, 'promo_title');
+                $promo->promo_content = carbon_get_post_meta($promo->ID, 'promo_content');
+                $promo->promo_link_text = carbon_get_post_meta($promo->ID, 'promo_link_text');
+                $promo->promo_start_date = carbon_get_post_meta($promo->ID, 'promo_start_date');
+                $promo->promo_end_date = carbon_get_post_meta($promo->ID, 'promo_end_date');
+                $promo->promo_category = get_the_terms($promo->ID, 'promo_category');
+                $promo->mobile_promo_image = carbon_get_post_meta($promo->ID, 'mobile_promo_image');
+                $promo->desktop_promo_image_type = carbon_get_post_meta($promo->ID, 'desktop_promo_image_type');
+                $promo->full_desktop_promo_image = carbon_get_post_meta($promo->ID, 'full_desktop_promo_image');
+                $promo->half_desktop_promo_image = carbon_get_post_meta($promo->ID, 'half_desktop_promo_image');
+            }
+            ob_start();
+        ?>
+
+        <div class="lpd-promo-list">
+            <?php foreach ($promos as $promo) {
+                $image = [
+                    'desktop' => [
+                        'full' => wp_get_attachment_image($promo->full_desktop_promo_image, 'full'),
+                        'half' => wp_get_attachment_image($promo->half_desktop_promo_image, 'full'),
+                    ],
+                    'mobile' => wp_get_attachment_image($promo->mobile_promo_image, 'full'),
+                ];
+
+                $detect = new MobileDetect;
+                if ($detect->isMobile()) {
+                    $image = $image['mobile'];
+                } else {
+                    if ($promo->desktop_promo_image_type === 'full') {
+                        $image =  $image['desktop']['full'];
+                    } else {
+                        $image =  $image['desktop']['half'];
+                    }
+                }
+                ?>
+                <!-- <h3><?php echo $promo->post_title; ?></h3> -->
+                <?php
+                if ($image) {
+                    echo $image;
+                }
+                ?>
+
+                <p><?php echo $promo->promo_content; ?></p>
+                <a href="<?php echo get_permalink($promo->ID); ?>"><?php echo $promo->promo_link_text; ?></a>
+
+            <?php } ?>
+        </div>
+        
+
+
+                <?php
+                $output = ob_get_clean();
+                echo $output;
+            } );
+    }
+
 }

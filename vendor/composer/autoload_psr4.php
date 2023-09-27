@@ -34,6 +34,7 @@ return array(
     'HelloNico\\Timber\\' => array($vendorDir . '/hellonico/timber-dump-extension/src'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
+    'Detection\\' => array($vendorDir . '/mobiledetect/mobiledetectlib/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
     'Carbon_Fields_Plugin\\' => array($baseDir . '/wp-content/plugins/carbon-fields-plugin/core'),
     'Carbon_Fields\\' => array($vendorDir . '/htmlburger/carbon-fields/core'),
