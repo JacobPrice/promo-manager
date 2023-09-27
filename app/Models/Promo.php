@@ -220,11 +220,11 @@ class Promo
                 $now = $now->format('Y-m-d');
 
                 if ($now >= $start_date && $now <= $end_date) {
-                    echo 'Active';
+                    echo '<span style="color: green;">Active</span>';
                 } else if ($now < $start_date) {
-                    echo 'Pending';
+                    echo '<span style="color: orange;">Pending</span>';
                 } else {
-                    echo 'Expired';
+                    echo '<span style="color: red;">Expired</span>';
                 }
                 break;
             case 'start_date':
@@ -238,23 +238,18 @@ class Promo
                 break;
     
             case 'promo_category':
-                $linked_categories = carbon_get_post_meta($post_id, 'linked_category');
-                if ($linked_categories) {
-                    $terms_list = [];
-                    foreach ($linked_categories as $term) {
-                        // get the term object
-                        $term_obj = get_term($term);
-                        // get the term name
-                        $term_name = $term_obj->name;
-                        // add to the terms list array
-                        array_push($terms_list, $term_name);
+                $categories = get_the_terms($post_id, 'promo_category');
+                if ($categories) {
+                    $output = '';
+                    foreach ($categories as $category) {
+                        $output .= '<a href="' . esc_url(get_edit_term_link($category->term_id, 'promo_category')) . '">' . esc_html($category->name) . '</a>, ';
                     }
-                    echo implode(', ', $terms_list);
+                    echo trim($output, ', '); // trim the trailing comma
                 } else {
                     echo '—'; // dash if no categories are linked
                 }
                 break;
-    
+
             case 'image':
                 $desktop_image_type = carbon_get_post_meta($post_id, 'desktop_promo_image_type');
                 if ($desktop_image_type === 'full') {
@@ -266,7 +261,7 @@ class Promo
                 }
                 if ($image_id) {
                     $image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
-                    echo '<img src="' . esc_url($image_src[0]) . '" style="max-width:60px;">';
+                    echo '<img src="' . esc_url($image_src[0]) . '" style="max-width:150px;">';
                 } else {
                     echo '—'; // dash if no image is set
                 }
