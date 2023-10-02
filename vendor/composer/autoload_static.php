@@ -8,25 +8,17 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        '60799491728b879e74601d83e38b2cad' => __DIR__ . '/..' . '/illuminate/collections/helpers.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '37920fbd6eaeababa873d97ba1c5324c' => __DIR__ . '/..' . '/hellonico/timber-dump-extension/functions.php',
-        '9d5e8cc811cda946a0f99f184dbdb94f' => __DIR__ . '/..' . '/boxybird/morph/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'v' => 
-        array (
-            'voku\\' => 5,
-        ),
         'T' => 
         array (
             'Twig\\Extra\\String\\' => 18,
@@ -43,16 +35,12 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
             'Symfony\\Contracts\\Translation\\' => 30,
             'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
-            'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
-            'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\Console\\' => 26,
         ),
         'P' => 
         array (
-            'Psr\\SimpleCache\\' => 16,
             'Psr\\Container\\' => 14,
-            'Psr\\Clock\\' => 10,
         ),
         'O' => 
         array (
@@ -61,12 +49,6 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
         'L' => 
         array (
             'LpdPromo\\' => 9,
-        ),
-        'I' => 
-        array (
-            'Illuminate\\Support\\' => 19,
-            'Illuminate\\Encryption\\' => 22,
-            'Illuminate\\Contracts\\' => 21,
         ),
         'H' => 
         array (
@@ -79,7 +61,6 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
         ),
         'D' => 
         array (
-            'Doctrine\\Inflector\\' => 19,
             'Detection\\' => 10,
         ),
         'C' => 
@@ -87,19 +68,10 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
             'Composer\\Installers\\' => 20,
             'Carbon_Fields_Plugin\\' => 21,
             'Carbon_Fields\\' => 14,
-            'Carbon\\' => 7,
-        ),
-        'B' => 
-        array (
-            'BoxyBird\\Morph\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
-        ),
         'Twig\\Extra\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/string-extra',
@@ -144,33 +116,17 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Symfony\\Component\\Translation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/translation',
-        ),
         'Symfony\\Component\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
-        ),
-        'Symfony\\Component\\HttpFoundation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Psr\\SimpleCache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
-        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'Psr\\Clock\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
         'OgPlugin\\' => 
         array (
@@ -180,20 +136,6 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
         'LpdPromo\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-        ),
-        'Illuminate\\Support\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/collections',
-            1 => __DIR__ . '/..' . '/illuminate/macroable',
-            2 => __DIR__ . '/..' . '/illuminate/support',
-        ),
-        'Illuminate\\Encryption\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/encryption',
-        ),
-        'Illuminate\\Contracts\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/contracts',
         ),
         'HelloNico\\Twig\\' => 
         array (
@@ -206,10 +148,6 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
-        ),
-        'Doctrine\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
         ),
         'Detection\\' => 
         array (
@@ -226,14 +164,6 @@ class ComposerStaticInit3670a28ab39bafd202086b55e026dde1
         'Carbon_Fields\\' => 
         array (
             0 => __DIR__ . '/..' . '/htmlburger/carbon-fields/core',
-        ),
-        'Carbon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
-        'BoxyBird\\Morph\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/boxybird/morph/src',
         ),
     );
 

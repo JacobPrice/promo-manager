@@ -10,13 +10,25 @@ use LpdPromo\Models\Promo;
 //       echo '<script src="https://cdn.tailwindcss.com"></script>';
 //       echo '<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>';
 //   });
-  
 
 
-add_action( 'after_setup_theme', 'crb_load' );
-function crb_load() {
+
+add_action('after_setup_theme', 'crb_load');
+function crb_load()
+{
     \Carbon_Fields\Carbon_Fields::boot();
 }
+
+
+function enqueue_swiper_styles() {
+    wp_enqueue_style( 'swiper-styles', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
+}
+function enqueue_swiper_scripts() {
+    wp_enqueue_script( 'swiper-scripts', 'https://unpkg.com/swiper/swiper-bundle.min.js', array('jquery'), '1.0.0', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper_styles' );
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper_scripts' );
 
 $faker = Factory::create();
 // make faker global
