@@ -24,11 +24,22 @@ function enqueue_swiper_styles() {
     wp_enqueue_style( 'swiper-styles', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
 }
 function enqueue_swiper_scripts() {
-    wp_enqueue_script( 'swiper-scripts', 'https://unpkg.com/swiper/swiper-bundle.min.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script( 'swiper-scripts', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], '1.0.0', true );
 }
+function enqueue_swiper_script_for_slider() {
+    wp_enqueue_script( 'swiper-slider-script', plugin_dir_url(__FILE__) . '/resources/assets/scripts/swiper.js', [], '', true );
+}
+function enqueue_swiper_style_for_slider() {
+    wp_enqueue_style( 'swiper-slider-style', plugin_dir_url(__FILE__) . '/resources/assets/styles/swiper.css', [] );
+}
+
+
 
 add_action( 'wp_enqueue_scripts', 'enqueue_swiper_styles' );
 add_action( 'wp_enqueue_scripts', 'enqueue_swiper_scripts' );
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper_script_for_slider');
+add_action( 'wp_enqueue_scripts', 'enqueue_swiper_style_for_slider');
+
 
 $faker = Factory::create();
 // make faker global

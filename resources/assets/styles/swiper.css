@@ -1,0 +1,37 @@
+:root {
+    --swiper-theme-color: black;
+    --swiper-navigation-sides-offset: 3px;
+    --swiper-navigation-size: 20px;
+    --swiper-icon-color: white;
+    --swiper-navigation-top-offset: 50%;
+    --swiper-container-padding-x: 10px;
+    --swiper-pagination-bullet-size: 10px;
+    --swiper-pagination-bullet-inactive-color: var(--swiper-theme-color);
+    --swiper-pagination-bullet-border-color: black;
+    --swiper-pagination-bullet-inactive-color: white;
+    --swiper-pagination-bullet-inactive-opacity: 100%;
+    
+    /* --swiper-pagination-bullet-width */
+    /* --swiper-pagination-bullet-height */
+    /* --swiper-pagination-bullet-border-radius */
+}
+.swiper-button-prev, .swiper-button-next {
+    border: 1px solid var(--swiper-theme-color);
+    border-radius: 100%;
+    background: var(--swiper-theme-color);
+    height: var(--swiper-navigation-size);
+    width: var(--swiper-navigation-size);
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: calc(var(--swiper-navigation-size) / 2);
+    color: var(--swiper-icon-color, white);
+    font-weight: bold;
+    text-shadow: var(--swiper-icon-color, white) 0px 0px;
+}
+.swiper-container {
+    position: relative;
+    padding: 0 calc(var(--swiper-container-padding-x, 10px) + 1rem);
+}
+.swiper-pagination-bullet {
+    border: 1px solid var(--swiper-pagination-bullet-border-color);
+}
