@@ -17,8 +17,6 @@ class Promo
 
     public static function init()
     {
-        add_action('init', [__CLASS__, 'register_post_type']);
-        add_action('init', [__CLASS__, 'register_taxonomies'], 0);
         add_filter('manage_lpd-promo_posts_columns', [__CLASS__, 'add_new_columns']);
         add_action('carbon_fields_register_fields', [__CLASS__, 'register_custom_fields']);
         add_action('manage_lpd-promo_posts_custom_column', [__CLASS__, 'manage_custom_columns'], 10, 2);
@@ -29,8 +27,36 @@ class Promo
         add_action('carbon_fields_register_fields', [__CLASS__, 'make_promo_settings']);
         // put the promo_settings in the menu
         // add_action('admin_menu', [__CLASS__, 'add_promo_settings_to_menu'], 999);
+        add_action('admin_head', [__CLASS__, 'print_css_to_head']);
+        add_action('wp_head', [__CLASS__, 'print_css_to_head']);
 
 
+    }
+    public static function print_css_to_head() {
+       function field_exists($field, $name) {
+        $field = carbon_get_theme_option($field);
+        if($field && $field != '') {
+            if(is_numeric($field)) {
+                $field = $field . 'px';
+            }
+            return "$name: $field;";
+          }
+        };
+        $promo_theme_color = field_exists('promo_theme_color', '--swiper-theme-color');
+        $promo_theme_color_secondary = field_exists('promo_theme_color_secondary', '--swiper-theme-color-accent');
+        $promo_theme_navigation_size = field_exists('promo_theme_navigation_size', '--swiper-navigation-size');
+        $promo_theme_navigation_sides_offset = field_exists('promo_theme_navigation_sides_offset', '--swiper-navigation-sides-offset');
+        $styles = <<<EOT
+        <style>
+            :root {
+                $promo_theme_color
+                $promo_theme_color_secondary
+                $promo_theme_navigation_size
+                $promo_theme_navigation_sides_offset
+           }
+        </style>
+        EOT;
+        echo $styles;
     }
     public static function add_promo_settings_to_menu() {
         add_submenu_page(
@@ -67,7 +93,12 @@ class Promo
                     ->set_width(50),
                 ]);
 
-                // move the promo settings to under this submenu
+                    // promo_global_individual_pages_disabled
+                    // promo_global_link_is_external
+                    // promo_global_link_text
+                    // promo_global_link_external
+                    
+
                 $promo_settings = \Carbon_Fields\Container\Container::make('theme_options', 'Promo Settings')
     
                 ->set_page_parent('edit.php?post_type=lpd-promo')
@@ -77,7 +108,8 @@ class Promo
                     ->set_width(50),
                     Field::make('text', 'promo_link_external', 'Promo Link')
                     ->set_help_text('This is the link that will be used for the promo.')
-                    ->set_width(50),
+                    ->set_width(50)
+                    ->set_attribute('type', 'url')
                 ]);
             }
         );
@@ -192,77 +224,6 @@ class Promo
             ]);
     }
 
-    public static function register_post_type()
-    {
-        register_post_type(
-            self::POST_TYPE,
-            [
-                'labels' => [
-                    'name' => __('Promos'),
-                    'singular_name' => __('Promo'),
-                    'menu_name' => __('Promos'),
-                    'name_admin_bar' => __('Promo'),
-                    'add_new' => __('Add New'),
-                    'add_new_item' => __('Add New Promo'),
-                    'new_item' => __('New Promo'),
-                    'edit_item' => __('Edit Promo'),
-                    'view_item' => __('View Promo'),
-                    'all_items' => __('All Promos'),
-                    'search_items' => __('Search Promos'),
-                    'parent_item_colon' => __('Parent Promos:'),
-                    'not_found' => __('No promos found.'),
-                    'not_found_in_trash' => __('No promos found in Trash.')
-                ],
-                'public' => true,
-                'has_archive' => true,
-                'show_ui' => true,
-                'rewrite' => [
-                    'slug' => 'promos'
-                ],
-                'supports' => [
-                    'title',
-                    'editor',
-                    'thumbnail',
-                    'excerpt',
-                    'custom-fields'
-                ],
-                'menu_icon' => 'dashicons-awards',
-                'show_in_rest' => true,
-                'rest_base' => 'lpd-promo'
-            ]
-        );
-    }
-
-    public static function register_taxonomies()
-    {
-        register_taxonomy('promo_category', self::POST_TYPE, [
-            'labels' => [
-                'name' => __('Promo Categories'),
-                'singular_name' => __('Promo Category'),
-                'menu_name' => __('Promo Categories'),
-                'all_items' => __('All Promo Categories'),
-                'edit_item' => __('Edit Promo Category'),
-                'view_item' => __('View Promo Category'),
-                'update_item' => __('Update Promo Category'),
-                'add_new_item' => __('Add New Promo Category'),
-                'new_item_name' => __('New Promo Category Name'),
-                'parent_item' => __('Parent Promo Category'),
-                'parent_item_colon' => __('Parent Promo Category:'),
-                'search_items' => __('Search Promo Categories'),
-                'popular_items' => __('Popular Promo Categories'),
-                'separate_items_with_commas' => __('Separate promo categories with commas'),
-                'add_or_remove_items' => __('Add or remove promo categories'),
-                'choose_from_most_used' => __('Choose from the most used promo categories'),
-                'not_found' => __('No promo categories found.')
-            ],
-            'public' => true,
-            'show_ui' => true,
-            'show_in_menu' => 'lpd-promo',
-            'show_in_rest' => true,
-
-        ]);
-
-    }
 
     // create new columns for this post type, these should include start date, end date, image, promo category
     public static function add_new_columns($columns)
@@ -532,6 +493,7 @@ class Promo
             Field::make('text', 'promo_global_link_external', 'Promo Global Link External')
             ->set_help_text('This is the link that will be used for the promo.')
             ->set_width(50)
+            ->set_attribute('type', 'url')
             ->set_conditional_logic([
                 [
                     'field' => 'promo_global_link_is_external',
@@ -547,9 +509,14 @@ class Promo
             Field::make('color', 'promo_theme_color_secondary', 'Promo Theme Color Secondary')
             ->set_help_text('This colors the following: Link Text, Next/Prev Arrows Hover, Inactive Slide Dot')
             ->set_width(25),
-
-            // make 
-
+            Field::make('text', 'promo_theme_navigation_size', 'Promo Theme Navigation Size')
+            ->set_help_text('This sets the size of the next/prev arrows and the slide dots. If left blank it will default to 20px.')
+            ->set_width(25)
+            ->set_attribute('type', 'number'),
+            Field::make('text', 'promo_theme_navigation_sides_offset', 'Promo Theme Navigation Sides Offset')
+            ->set_help_text('This sets the offset of the next/prev arrows. If left blank it will default to 10px.')
+            ->set_width(25)
+            ->set_attribute('type', 'number'),
         ])
         ->set_page_parent('edit.php?post_type=lpd-promo');
     }

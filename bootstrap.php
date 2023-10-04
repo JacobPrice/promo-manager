@@ -4,12 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Faker\Factory;
 use Timber\Timber;
 use LpdPromo\Models\Promo;
-
-// add_action('admin_print_scripts', function() {
-//     // print alpinejs cdn and tailwindcss cdn
-//       echo '<script src="https://cdn.tailwindcss.com"></script>';
-//       echo '<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>';
-//   });
+use OgPlugin\OgCore;
 
 
 

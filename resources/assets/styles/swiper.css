@@ -1,14 +1,15 @@
 :root {
     --swiper-theme-color: black;
+    --swiper-theme-color-accent: white;
     --swiper-navigation-sides-offset: 3px;
     --swiper-navigation-size: 20px;
-    --swiper-icon-color: white;
+    --swiper-icon-color: var(--swiper-theme-color-accent);
     --swiper-navigation-top-offset: 50%;
     --swiper-container-padding-x: 10px;
     --swiper-pagination-bullet-size: 10px;
     --swiper-pagination-bullet-inactive-color: var(--swiper-theme-color);
-    --swiper-pagination-bullet-border-color: black;
-    --swiper-pagination-bullet-inactive-color: white;
+    --swiper-pagination-bullet-border-color: var(--swiper-theme-color);
+    --swiper-pagination-bullet-inactive-color: var(--swiper-theme-color-accent);
     --swiper-pagination-bullet-inactive-opacity: 100%;
     
     /* --swiper-pagination-bullet-width */
@@ -34,4 +35,8 @@
 }
 .swiper-pagination-bullet {
     border: 1px solid var(--swiper-pagination-bullet-border-color);
+}
+.swiper-slide {
+    display:flex;
+    justify-content: center;
 }

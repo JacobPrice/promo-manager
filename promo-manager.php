@@ -11,4 +11,4 @@
  * GitHub Plugin URI: https://github.com/JacobPrice/promo-manager
  */
 
-require_once plugin_dir_path( __FILE__ ) . 'bootstrap.php';
+require_once plugin_dir_path( __FILE__ ) . 'bootstrap/app.php';
