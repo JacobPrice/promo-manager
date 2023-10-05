@@ -104,7 +104,7 @@ abstract class OgCore {
      * @param array $args The arguments to pass to the method.
      */
     private function run_method(string $class_name, string $method_name, array $args = []): void {
-        if (!isset($this->instances[$class_name])) {
+        if (!isset($this->instances[$class_name]) && class_exists($class_name)) {
             // Consider checking class_exists($class_name) before instantiating
             $this->instances[$class_name] = new $class_name();
         }
