@@ -17,7 +17,7 @@ class Promo
 
     public static function init()
     {
-        add_filter('manage_lpd-promo_posts_columns', [__CLASS__, 'add_new_columns']);
+       
         add_action('carbon_fields_register_fields', [__CLASS__, 'register_custom_fields']);
         add_action('manage_lpd-promo_posts_custom_column', [__CLASS__, 'manage_custom_columns'], 10, 2);
         add_action('wp', [__CLASS__, 'setup_schedule']);
@@ -132,102 +132,14 @@ class Promo
 // ->set_help_text('This is the promo start date') as an example
     public static function register_custom_fields()
     {
-        Container::make('post_meta', 'Promo Settings')
-            ->where('post_type', '=', 'lpd-promo')
-            ->add_tab('Settings', [
-                Field::make('checkbox', 'promo_not_public', 'Disable Individual Promo')
-                ->set_help_text('Check this box to disable this promo from being accessible directly. This will also add a noindex meta tag to prevent search engines from indexing the page. This will still show in the promo block if it is utilized.'),
-                Field::make('checkbox', 'promo_customize_link', 'Customize The Promo Link')
-                ->set_help_text('Check this box to customize the promo link. If this is not checked the promo will utilize global settings.'),
-                Field::make('radio', 'desktop_promo_image_type', 'Desktop Promo Image Type')
-                ->add_options([
-                    'full' => 'Full Width Image',
-                    'half' => 'Half Width Image',
-                ])
-                ->set_help_text('Select the type of desktop image you want to use. If you select half width, content is expected to be added to the right side of the image.')
-                ->set_width(10),
-                Field::make('checkbox', 'promo_uses_custom_content', 'Utilize Custom Content Instead Of The Promo Excerpt')
-                ->set_help_text('Check this box to utilize the custom content instead of the promo excerpt. The promo excerpt is generated from the promo content in the above editor.'),
-                // Field::make('association', 'promo_on_page', 'Show Promo On Page')
-                // ->set_help_text('Select the page you want to show this promo on. NOTE: If the Promo Block is utilized it will still show in the block. Utilizing this will add the promo to the bottom of the page in a slider if multiple promos are selected.')
-                //     ->set_types([
-                //         [
-                //             'type' => 'post',
-                //             'post_type' => 'page',
-                //         ],
-                //     ])
-            ])
-            ->add_tab('Dates', [
-                Field::make('date', 'promo_start_date', 'Promo Start Date')
-                    ->set_width(50)
-                    ->set_required(true),
-                Field::make('date', 'promo_end_date', 'Promo End Date')
-                    ->set_width(50)
-                    ->set_required(true),
-            ])
-            ->add_tab('Images', [
-                Field::make('image', 'mobile_promo_image', 'Mobile Promo Image')
-                    ->set_width(10),
 
-                Field::make('image', 'full_desktop_promo_image', 'Desktop Promo Image -- Full Width')
-                    ->set_conditional_logic([
-                        [
-                            'field' => 'desktop_promo_image_type',
-                            'value' => 'full',
-                        ],
-                    ])
-                    ->set_width(10),
-                Field::make('image', 'half_desktop_promo_image', 'Desktop Promo Image -- Half Width')
-                    ->set_conditional_logic([
-                        [
-                            'field' => 'desktop_promo_image_type',
-                            'value' => 'half',
-                        ],
-                    ])
-                    ->set_width(10),
-
-            ])
-            ->add_tab('Content', [
-                Field::make('text', 'promo_link_text', 'Promo Link Text')
-                ->set_help_text('This is the text that will be displayed on the promo link/button. This option overrides the global promo link text.')
-                ->set_conditional_logic([
-                    [
-                        'field' => 'promo_customize_link',
-                        'value' => true,
-                    ]])
-                    ->set_width(50),
-                Field::make('text', 'promo_link_external', 'Promo Link')
-                ->set_help_text('This is the link that will be used for the promo. This option overrides the global promo link.')
-                ->set_conditional_logic([
-                    [
-                        'field' => 'promo_customize_link',
-                        'value' => true,
-                    ]])
-                    ->set_width(50),
-
-                Field::make('rich_text', 'promo_content', 'Promo Content')
-                    ->set_width(100)
-                    ->set_conditional_logic([
-                        [
-                            'field' => 'promo_uses_custom_content',
-                            'value' => false,
-                        ],
-                    ])
-                    ->set_help_text('This is the content that will be displayed on the promo. This option overrides the use of the promo excerpt.'),
-                    Field::make( 'separator', 'crb_separator', __( 'No Content Can Be Added If The Promo Is Using The Promo Excerpt Setting, See The Settings Tab.' ) )
-                    ->set_conditional_logic([
-                        [
-                            'field' => 'promo_uses_custom_content',
-                            'value' => true,
-                        ],
-                    ]),
-            ]);
     }
 
 
     // create new columns for this post type, these should include start date, end date, image, promo category
     public static function add_new_columns($columns)
     {
+
         $new_columns['cb'] = '<input type="checkbox" />';
         $new_columns['title'] = __('Title');
         $new_columns['status'] = __('Status');

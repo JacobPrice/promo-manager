@@ -16,6 +16,7 @@ class ComposerStaticInit8c284b8a93e5e165dae4c01bf4899b82
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '37920fbd6eaeababa873d97ba1c5324c' => __DIR__ . '/..' . '/hellonico/timber-dump-extension/functions.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -46,10 +47,22 @@ class ComposerStaticInit8c284b8a93e5e165dae4c01bf4899b82
         array (
             'OgPlugin\\' => 9,
         ),
+        'L' => 
+        array (
+            'Laravel\\SerializableClosure\\' => 28,
+        ),
+        'I' => 
+        array (
+            'Invoker\\' => 8,
+        ),
         'H' => 
         array (
             'HelloNico\\Twig\\' => 15,
             'HelloNico\\Timber\\' => 17,
+        ),
+        'D' => 
+        array (
+            'DI\\' => 3,
         ),
         'C' => 
         array (
@@ -118,6 +131,14 @@ class ComposerStaticInit8c284b8a93e5e165dae4c01bf4899b82
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Laravel\\SerializableClosure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
+        'Invoker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
+        ),
         'HelloNico\\Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/hellonico/twig-dump-extension/src',
@@ -125,6 +146,10 @@ class ComposerStaticInit8c284b8a93e5e165dae4c01bf4899b82
         'HelloNico\\Timber\\' => 
         array (
             0 => __DIR__ . '/..' . '/hellonico/timber-dump-extension/src',
+        ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
         ),
         'Composer\\Installers\\' => 
         array (

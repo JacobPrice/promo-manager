@@ -12,4 +12,5 @@ class AssetController {
         wp_enqueue_style( 'swiper-styles', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
         wp_enqueue_style( 'swiper-slider-style', plugin_dir_url(__FILE__) . '/resources/assets/styles/swiper.css', [] );
     }
+
 }

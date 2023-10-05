@@ -21,7 +21,10 @@ return array(
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'OgPlugin\\' => array($baseDir . '/src'),
+    'Laravel\\SerializableClosure\\' => array($vendorDir . '/laravel/serializable-closure/src'),
+    'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
     'HelloNico\\Twig\\' => array($vendorDir . '/hellonico/twig-dump-extension/src'),
     'HelloNico\\Timber\\' => array($vendorDir . '/hellonico/timber-dump-extension/src'),
+    'DI\\' => array($vendorDir . '/php-di/php-di/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );

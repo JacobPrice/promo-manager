@@ -1,2 +1,5 @@
 .DS_Store
 node_modules
+og-plugin/vendor
+vendor/
+og-plugin/vendor/
