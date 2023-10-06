@@ -1,11 +1,19 @@
 <?php
 use LpdPromo\Main;
+use OgPlugin\Config;
 use DI\ContainerBuilder;
 
 require_once plugin_dir_path(__DIR__) . '/vendor/autoload.php';
+require_once plugin_dir_path(__DIR__) . '/lib/helpers.php';
+
 // TODO: Need to move this to a package within Og
 $builder = new ContainerBuilder();
-$builder->addDefinitions(plugin_dir_path(__DIR__) . '/app/config.php');
+$builder->addDefinitions([
+    Config::class => function() {
+        $config_data = include(plugin_dir_path(__DIR__) . 'app/Config/app.php');
+        return new Config($config_data);
+    },
+]);
 $builder->useAutowiring(true);
 $container = $builder->build();
 

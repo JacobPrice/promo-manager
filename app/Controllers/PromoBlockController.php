@@ -10,10 +10,8 @@ use LpdPromo\Models\PromoModel;
 
 class PromoBlockController
 {
-    protected $model;
-    public function __construct(PromoModel $model)
+    public function __construct(protected PromoModel $model)
     {
-        $this->model = $model;
     }
     public static function category_options_for_promo_categories()
     {
@@ -107,11 +105,11 @@ class PromoBlockController
                     $theme = wp_get_theme();
                     $theme_dir = $theme->get_stylesheet_directory();
                     // root plugin directory
-                    $plugin_dir = plugin_dir_path(__DIR__);
+                 
                     if (file_exists($theme_dir . '/promo-block.twig')) {
                     $template = $theme_dir . '/promo-block.twig';
                     } else {
-                    $template = $plugin_dir . 'resources/views/blocks/promo-block.twig';
+                    $template = config_get('plugin.dir') . 'resources/blocks/promo-block.twig';
                     }
                     // include the template with the promos
                     Timber::render(

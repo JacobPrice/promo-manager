@@ -3,14 +3,16 @@
 namespace LpdPromo\Controllers;
 
 class PluginsController {
-    public static function carbon_fields() {
+    public function __construct() {
+    }
+    public static function carbon_fields( ) {
         \Carbon_Fields\Carbon_Fields::boot();
     }
 
     public function timber_locations($paths) {
             $paths[] = [
-                plugin_dir_path(__FILE__) . 'resources/views',
-                plugin_dir_path(__FILE__) . 'resources/blocks',
+                config_get('plugin.dir') . 'resources/views',
+                config_get('plugin.dir') . 'resources/blocks',
             ];
             return $paths;
     }
