@@ -12,3 +12,8 @@
  */
 
 require_once plugin_dir_path( __FILE__ ) . 'bootstrap/app.php';
+
+require_once plugin_dir_path( __FILE__ ) . 'updater.php';
+
+$updater = new GitHubPluginUpdater( 'promo-manager', 'JacobPrice/promo-manager' );
+
