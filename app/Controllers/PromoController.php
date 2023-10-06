@@ -4,7 +4,7 @@ namespace LpdPromo\Controllers;
 
 use Carbon_Fields\Field;
 use Carbon_Fields\Container;
-use OgPlugin\PostController;
+use LpdPromo\Og\PostController;
 use LpdPromo\Models\PromoModel;
 
 class PromoController extends PostController {

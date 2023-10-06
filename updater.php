@@ -81,6 +81,23 @@ public function set_update_transient( $transient ) {
         return json_decode($body);
     }
 
+    public function manual_check() {
+        // Remove any existing transient for a fresh check
+        delete_transient($this->transient_name);
+    
+        // Force WordPress to check for updates
+        set_site_transient('update_plugins', null);
+    
+        // Now we call our own transient set method
+        $transient = get_site_transient('update_plugins');
+        $this->set_update_transient($transient);
+    
+        // Inform the user. You can modify the message to be more informative if needed.
+        return isset($transient->response[$this->slug . '/' . $this->slug . '.php']) 
+               ? "Update available." 
+               : "You have the latest version.";
+    }
+
 }
 
 // Usage:

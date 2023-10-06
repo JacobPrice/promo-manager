@@ -1,7 +1,7 @@
 <?php
 
 namespace LpdPromo;
-use OgPlugin\OgCore;
+use LpdPromo\Og\OgCore;
 use LpdPromo\Controllers\AssetController;
 use LpdPromo\Controllers\PluginsController;
 use LpdPromo\Controllers\PromoController;
