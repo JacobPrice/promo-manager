@@ -45,6 +45,7 @@ class PromoModel
         
     }
     private function set_post_type_args() {
+        $rewrite_slug = carbon_get_theme_option('promo_slug');
         $this->post_type_args = [
             'labels' => [
                 'name' => __('Promos'),
@@ -66,7 +67,7 @@ class PromoModel
             'has_archive' => true,
             'show_ui' => true,
             'rewrite' => [
-                'slug' => 'promos'
+                'slug' => $rewrite_slug ? $rewrite_slug : 'promos',
             ],
             'supports' => [
                 'title',
