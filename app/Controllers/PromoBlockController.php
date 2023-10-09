@@ -18,16 +18,15 @@ class PromoBlockController
         // set the options for promo_category
         $category_options = [];
         $categories = get_terms(
-            array(
+            [
                 'taxonomy' => 'promo_category',
-                // replace with your taxonomy name
                 'hide_empty' => false,
-                // set to true if you only want terms with posts
-            )
+            ]
         );
-
-        foreach ($categories as $term) {
-            $category_options[$term->term_id] = str_replace('&amp;', '&', $term->name); // Note the change from $term->id to $term->term_id
+        if($categories) {
+            foreach ($categories as $term) {
+                $category_options[$term->term_id] = str_replace('&amp;', '&', $term->name);
+            }
         }
 
         return $category_options;

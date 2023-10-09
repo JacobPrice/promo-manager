@@ -128,7 +128,8 @@ class PromoController extends PostController {
                 'half' => 'Half Width Image',
             ])
             ->set_help_text('Select the type of desktop image you want to use. If you select half width, content is expected to be added to the right side of the image.')
-            ->set_width(10),
+            ->set_width(10)
+            ->set_required(true),
             Field::make('checkbox', 'promo_uses_custom_content', 'Utilize Custom Content Instead Of The Promo Excerpt')
             ->set_help_text('Check this box to utilize the custom content instead of the promo excerpt. The promo excerpt is generated from the promo content in the above editor.'),
             // Field::make('association', 'promo_on_page', 'Show Promo On Page')
@@ -150,7 +151,8 @@ class PromoController extends PostController {
         ])
         ->add_tab('Images', [
             Field::make('image', 'mobile_promo_image', 'Mobile Promo Image')
-                ->set_width(10),
+                ->set_width(10)
+                ->set_required(true),
 
             Field::make('image', 'full_desktop_promo_image', 'Desktop Promo Image -- Full Width')
                 ->set_conditional_logic([
@@ -159,6 +161,7 @@ class PromoController extends PostController {
                         'value' => 'full',
                     ],
                 ])
+                ->set_required(true)
                 ->set_width(10),
             Field::make('image', 'half_desktop_promo_image', 'Desktop Promo Image -- Half Width')
                 ->set_conditional_logic([
@@ -167,6 +170,7 @@ class PromoController extends PostController {
                         'value' => 'half',
                     ],
                 ])
+                ->set_required(true)
                 ->set_width(10),
 
         ])
@@ -215,6 +219,13 @@ class PromoController extends PostController {
     public function check_promo_public_status()
     {
         if (is_singular($this->model->post_type)) {
+            if(!$this->model::is_active(get_the_ID())) {
+                // TODO: Refactor this to be a helper function since its duplicated below.
+                // Add noindex meta tag to prevent search engines from indexing the page
+                echo '<meta name="robots" content="noindex">';
+                wp_redirect(home_url());
+                exit;
+            }
             $post_id = get_the_ID();
             if(carbon_get_theme_option('promo_global_individual_pages_disabled')) {
                 // Add noindex meta tag to prevent search engines from indexing the page

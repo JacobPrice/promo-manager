@@ -1,50 +1,53 @@
-{% if promo_layout == "slider" %}
+{% if promos|length >= 1 %}
 
-	<div class="swiper-container">
 
-		<div class="swiper">
-			<div class="swiper-wrapper">
-				{% for promo in promos %}
-					<div class="swiper-slide">
-						{% if is_mobile %}
-							{{promo.images.mobile}}
-						{% else %}
-							{{promo.images.desktop[promo.promo_desktop_image_type]}}
-						{% endif %}
-					</div>
-				{% endfor %}
+	{% if promo_layout == "slider" and promos|length > 1 %}
+
+		<div class="swiper-container">
+
+			<div class="swiper">
+				<div class="swiper-wrapper">
+					{% for promo in promos %}
+						<div class="swiper-slide">
+							{% if is_mobile %}
+								<a href="">{{promo.images.mobile}}</a>
+							{% else %}
+								<a href="">{{promo.images.desktop[promo.promo_desktop_image_type]}}</a>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
 			</div>
-			<!-- If we need pagination -->
-			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
-	</div>
-{% else %}
-	<div class="lpd-promos">
-		{% for promo in promos %}
-			<div class="lpd-promo">
-				{% if is_mobile %}
-					{{promo.images.mobile}}
-				{% else %}
-					{{promo.images.desktop[promo.promo_desktop_image_type]}}
-				{% endif %}
-			</div>
-		{% endfor %}
-	</div>
+	{% else %}
+		<div class="lpd-promos">
+			{% for promo in promos %}
+				<div class="lpd-promo">
+					{% if is_mobile %}
+						{{promo.images.mobile}}
+					{% else %}
+						{{promo.images.desktop[promo.promo_desktop_image_type]}}
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
 
-	<style>
-		.lpd-promos {
-			display: grid;
-			justify-content: center;
-			align-items: center;
-			gap: 2rem;
-			margin-bottom: 2rem;
-		}
-	</style>
+		<style>
+			.lpd-promos {
+				display: grid;
+				justify-content: center;
+				align-items: center;
+				gap: 2rem;
+				margin-bottom: 2rem;
+			}
+		</style>
 
+	{% endif %}
 {% endif %}
-
 
 {# <style>
 .lpd-promos {

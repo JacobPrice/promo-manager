@@ -17,7 +17,7 @@ class Main extends OgCore {
         $this->add_action('wp_enqueue_scripts', [AssetController::class, 'styles']);
 
         // Carbon Fields
-        $this->add_action('after_setup_theme', [PluginsController::class, 'carbon_fields']);
+        $this->add_action('after_setup_theme', [PluginsController::class, 'carbon_fields'], 10);
 
         // Timber
         $this->add_action('init', [PluginsController::class, 'timber']);

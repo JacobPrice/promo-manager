@@ -7,8 +7,9 @@ class PromoModel
 {
     public string $post_type;
     public array $post_type_args;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->set_post_type();
         $this->set_post_type_args();
     }
@@ -21,31 +22,36 @@ class PromoModel
 
         return ($now >= $start_date && $now <= $end_date);
     }
-    public function get_active() {
-        
-            $args = array(
-                'post_type' => $this->post_type,
-                'posts_per_page' => -1,
-                'post_status' => 'publish',
-            );
-            $query = new \WP_Query($args);
-            $active_promos = [];
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    $post_id = get_the_ID();
-                    if (self::is_active($post_id)) {
-                        $active_promos[] = get_post($post_id);
-    
-                    }
+    public function get_active()
+    {
+
+        $args = array(
+            'post_type' => $this->post_type,
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+        $query = new \WP_Query($args);
+        $active_promos = [];
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id = get_the_ID();
+                if (self::is_active($post_id)) {
+                    $active_promos[] = get_post($post_id);
+
                 }
-                wp_reset_postdata();
             }
-            return $active_promos;
-        
+            wp_reset_postdata();
+        }
+        return $active_promos;
+
     }
-    private function set_post_type_args() {
-        $rewrite_slug = carbon_get_theme_option('promo_slug');
+    private function set_post_type_args()
+    {
+        // check to see if carbon_fields_register_fields action has been called
+        // if it has, then we can use the slug from the promo settings page
+    
+            $rewrite_slug = get_option('_promo_slug');
         $this->post_type_args = [
             'labels' => [
                 'name' => __('Promos'),
@@ -81,7 +87,8 @@ class PromoModel
             'rest_base' => 'lpd-promo'
         ];
     }
-    private function set_post_type() {
+    private function set_post_type()
+    {
         $this->post_type = 'lpd-promo';
     }
 }

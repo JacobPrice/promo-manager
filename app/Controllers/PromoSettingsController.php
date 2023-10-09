@@ -32,6 +32,10 @@ class PromoSettingsController {
                     'value' => true,
                 ],
             ]),
+            Field::make('text', 'promo_slug', 'Promo URL Slug')
+            ->set_help_text('This is the slug that will be used for the promo url. Changing this will require a permalinks flush by visiting this <a href="/wp-admin/options-permalink.php">page</a>. After going to the page no further action is needed. This will default to "promos" if left blank.')
+            ->set_default_value('promos')
+
         ])
         ->add_tab('Custom Styles',[
             Field::make('color', 'promo_theme_color', 'Promo Theme Color Primary')

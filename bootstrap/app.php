@@ -2,6 +2,7 @@
 use LpdPromo\Main;
 use LpdPromo\Og\Config;
 use DI\ContainerBuilder;
+use LpdPromo\Models\Promo;
 
 require_once plugin_dir_path(__DIR__) . '/vendor/autoload.php';
 require_once plugin_dir_path(__DIR__) . '/lib/helpers.php';
