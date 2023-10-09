@@ -17,14 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LpdPromo\\": "app/",
-            "OgPlugin\\": "OgPlugin/"
-        }
-    },
-    "repositories": {
-        "og-plugin": {
-            "type": "path",
-            "url": "./og-plugin"
+            "LpdPromo\\": "app/"
         }
     }
 }

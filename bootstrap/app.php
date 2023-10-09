@@ -18,10 +18,7 @@ $builder->addDefinitions([
 $builder->useAutowiring(true);
 $container = $builder->build();
 
-// if WP_ENVIRONMENT_TYPE is not defined or if its not local, use compiled container
-if (!defined('WP_ENVIRONMENT_TYPE') || WP_ENVIRONMENT_TYPE !== 'local') {
-    $builder->enableCompilation(plugin_dir_path(__DIR__) . '/storage/cache');
-}
+
 
 $main = new Main($container);
 
