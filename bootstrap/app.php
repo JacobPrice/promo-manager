@@ -1,6 +1,6 @@
 <?php
 use LpdPromo\Main;
-use OgPlugin\Config;
+use LpdPromo\Og\Config;
 use DI\ContainerBuilder;
 
 require_once plugin_dir_path(__DIR__) . '/vendor/autoload.php';
@@ -22,4 +22,10 @@ if (!defined('WP_ENVIRONMENT_TYPE') || WP_ENVIRONMENT_TYPE !== 'local') {
     $builder->enableCompilation(plugin_dir_path(__DIR__) . '/storage/cache');
 }
 
-new Main($container);
+$main = new Main($container);
+
+function reset_rewrites() {
+    flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'reset_rewrites' );
+register_deactivation_hook( __FILE__, 'reset_rewrites' );

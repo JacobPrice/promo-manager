@@ -6,7 +6,7 @@ abstract class PostController
 {
     protected $model;
 
-    public function __construct($model) {
+    public function __construct($model = null) {
         $this->model = $model;
     }
     

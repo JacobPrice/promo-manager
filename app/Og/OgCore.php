@@ -19,7 +19,12 @@ abstract class OgCore {
         }
         $this->add_hooks();
     }
-
+    public function on_activation( string $file, callable $callback ) {
+        register_activation_hook( $file, $callback );
+    }
+    public function on_deactivation( string $file, callable $callback ) {
+        register_deactivation_hook( $file, $callback );
+    }
     // TODO: move these to interface
     protected function on_init() {}
 

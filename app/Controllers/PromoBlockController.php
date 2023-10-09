@@ -35,6 +35,11 @@ class PromoBlockController
     public function make_promo_block()
     {
         $category_options = self::category_options_for_promo_categories();
+        if(empty($category_options)) {
+            $category_options = [
+                'none' => 'No Categories',
+            ];
+        }
         Block::make(__('Promo Block'))
             ->set_description('A block that displays active promos')
             ->add_fields([
@@ -87,7 +92,28 @@ class PromoBlockController
                     foreach ($promos as $promo) {
                         $promo->promo_title = carbon_get_post_meta($promo->ID, 'promo_title');
                         $promo->promo_content = carbon_get_post_meta($promo->ID, 'promo_content');
-                        $promo->promo_link_text = carbon_get_post_meta($promo->ID, 'promo_link_text');
+
+                        $promo_link_text = carbon_get_post_meta($promo->ID, 'promo_link_text');
+                        $promo_link_is_external = carbon_get_post_meta($promo->ID, 'promo_link_is_external');
+                        $promo_global_link_text = carbon_get_theme_option('promo_global_link_text');
+                        $promo_global_link_is_external = carbon_get_theme_option('promo_global_link_is_external');
+
+                        if ($promo_link_text) {
+                            $promo->promo_link_text = $promo_link_text;
+                        } else if ($promo_global_link_text) {
+                            $promo->promo_link_text = $promo_global_link_text;
+                        } else {
+                            $promo->promo_link_text = 'Learn More';
+                        }
+
+                        if ($promo_link_is_external) {
+                            $promo->promo_link_is_external = $promo_link_is_external;
+                        } else if ($promo_global_link_is_external) {
+                            $promo->promo_link_is_external = $promo_global_link_is_external;
+                        } else {
+                            $promo->promo_link_is_external = false;
+                        }
+
                         $promo->promo_start_date = carbon_get_post_meta($promo->ID, 'promo_start_date');
                         $promo->promo_end_date = carbon_get_post_meta($promo->ID, 'promo_end_date');
                         $promo->promo_category = get_the_terms($promo->ID, 'promo_category');
@@ -109,7 +135,7 @@ class PromoBlockController
                     if (file_exists($theme_dir . '/promo-block.twig')) {
                     $template = $theme_dir . '/promo-block.twig';
                     } else {
-                    $template = config_get('plugin.dir') . 'resources/blocks/promo-block.twig';
+                    $template = config('plugin.dir') . 'resources/blocks/promo-block.twig';
                     }
                     // include the template with the promos
                     Timber::render(

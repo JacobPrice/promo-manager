@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Faker\Factory;
 use Timber\Timber;
 use LpdPromo\Models\Promo;
-use OgPlugin\OgCore;
+use LpdPromo\Og\OgCore;
 
 
 

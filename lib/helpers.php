@@ -1,8 +1,8 @@
 <?php
-if ( ! function_exists( 'config_get' ) ) {
-    function config_get($key) {
+if ( ! function_exists( 'config' ) ) {
+    function config($key) {
         global $container; // Assuming you have your $container globally available.
-        $config = $container->get(OgPlugin\Config::class);
+        $config = $container->get(LpdPromo\Og\Config::class);
         return $config->get($key);
     }
 }

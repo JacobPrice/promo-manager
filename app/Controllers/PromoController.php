@@ -119,7 +119,7 @@ class PromoController extends PostController {
         ->where('post_type', '=', 'lpd-promo')
         ->add_tab('Settings', [
             Field::make('checkbox', 'promo_not_public', 'Disable Individual Promo')
-            ->set_help_text('Check this box to disable this promo from being accessible directly. This will also add a noindex meta tag to prevent search engines from indexing the page. This will still show in the promo block if it is utilized.'),
+            ->set_help_text('Check this box to disable this promo from being accessible directly. This will still show in the promo block if it is utilized. If this is not checked the promo will utilize global settings.'),
             Field::make('checkbox', 'promo_customize_link', 'Customize The Promo Link')
             ->set_help_text('Check this box to customize the promo link. If this is not checked the promo will utilize global settings.'),
             Field::make('radio', 'desktop_promo_image_type', 'Desktop Promo Image Type')
@@ -216,6 +216,12 @@ class PromoController extends PostController {
     {
         if (is_singular($this->model->post_type)) {
             $post_id = get_the_ID();
+            if(carbon_get_theme_option('promo_global_individual_pages_disabled')) {
+                // Add noindex meta tag to prevent search engines from indexing the page
+                echo '<meta name="robots" content="noindex">';
+                wp_redirect(home_url());
+                exit;
+            }
             $promo_not_public = carbon_get_post_meta($post_id, 'promo_not_public');
             if ($promo_not_public) {
                 // Add noindex meta tag to prevent search engines from indexing the page
