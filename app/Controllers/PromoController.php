@@ -118,7 +118,7 @@ class PromoController extends PostController {
         Container::make('post_meta', 'Promo Settings')
         ->where('post_type', '=', 'lpd-promo')
         ->add_tab('Settings', [
-            Field::make('checkbox', 'promo_not_public', 'Disable Individual Promo')
+            Field::make('checkbox', 'promo_not_public', 'Override Global Promo Access Setting')
             ->set_help_text('Check this box to disable this promo from being accessible directly. This will still show in the promo block if it is utilized. If this is not checked the promo will utilize global settings.'),
             Field::make('checkbox', 'promo_customize_link', 'Customize The Promo Link')
             ->set_help_text('Check this box to customize the promo link. If this is not checked the promo will utilize global settings.'),
