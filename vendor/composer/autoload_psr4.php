@@ -6,21 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Twig\\Extra\\String\\' => array($vendorDir . '/twig/string-extra'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Timber\\' => array($vendorDir . '/timber/timber/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
-    'Symfony\\Polyfill\\Intl\\Normalizer\\' => array($vendorDir . '/symfony/polyfill-intl-normalizer'),
-    'Symfony\\Polyfill\\Intl\\Grapheme\\' => array($vendorDir . '/symfony/polyfill-intl-grapheme'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
-    'Symfony\\Contracts\\Translation\\' => array($vendorDir . '/symfony/translation-contracts'),
-    'Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
-    'Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
-    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
-    'OgPlugin\\' => array($baseDir . '/OgPlugin', $vendorDir . '/lpd/og-plugin/src'),
     'LpdPromo\\' => array($baseDir . '/app'),
     'Laravel\\SerializableClosure\\' => array($vendorDir . '/laravel/serializable-closure/src'),
     'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
@@ -30,6 +22,4 @@ return array(
     'Detection\\' => array($vendorDir . '/mobiledetect/mobiledetectlib/src'),
     'DI\\' => array($vendorDir . '/php-di/php-di/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
-    'Carbon_Fields_Plugin\\' => array($baseDir . '/wp-content/plugins/carbon-fields-plugin/core'),
-    'Carbon_Fields\\' => array($vendorDir . '/htmlburger/carbon-fields/core'),
 );

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5aab59422e3b748b6bec10d95116aea",
+    "content-hash": "7ebfbc72d1a656bc69a781197b311cdc",
     "packages": [
         {
             "name": "composer/installers",
@@ -220,279 +220,6 @@
             "time": "2023-06-12T08:44:38+00:00"
         },
         {
-            "name": "hellonico/timber-dump-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nlemoine/timber-dump-extension.git",
-                "reference": "05d0ea9e13c044a3b78926ab4695b28e739aa205"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nlemoine/timber-dump-extension/zipball/05d0ea9e13c044a3b78926ab4695b28e739aa205",
-                "reference": "05d0ea9e13c044a3b78926ab4695b28e739aa205",
-                "shasum": ""
-            },
-            "require": {
-                "hellonico/twig-dump-extension": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "functions.php"
-                ],
-                "psr-4": {
-                    "HelloNico\\Timber\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Lemoine",
-                    "email": "dev@helloni.co",
-                    "homepage": "https://github.com/nlemoine"
-                }
-            ],
-            "description": "Provides Symfony VarDumper component for Timber",
-            "homepage": "https://github.com/nlemoine/timber-dump-extension",
-            "support": {
-                "issues": "https://github.com/nlemoine/timber-dump-extension/issues",
-                "source": "https://github.com/nlemoine/timber-dump-extension/tree/master"
-            },
-            "time": "2019-03-05T10:25:36+00:00"
-        },
-        {
-            "name": "hellonico/twig-dump-extension",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nlemoine/twig-dump-extension.git",
-                "reference": "fb5fbea20032254d32aaaba5fc1113a4a4877aaf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nlemoine/twig-dump-extension/zipball/fb5fbea20032254d32aaaba5fc1113a4a4877aaf",
-                "reference": "fb5fbea20032254d32aaaba5fc1113a4a4877aaf",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/var-dumper": "^4.2 || ^5.0 || ^6.0",
-                "twig/twig": "^2.4 || ^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "HelloNico\\Twig\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Lemoine",
-                    "email": "nico@niconico.fr",
-                    "homepage": "https://github.com/nlemoine"
-                }
-            ],
-            "description": "VarDumper Twig extension",
-            "homepage": "https://github.com/nlemoine/twig-dump-extension",
-            "support": {
-                "issues": "https://github.com/nlemoine/twig-dump-extension/issues",
-                "source": "https://github.com/nlemoine/twig-dump-extension/tree/1.2.0"
-            },
-            "time": "2022-07-12T15:30:32+00:00"
-        },
-        {
-            "name": "htmlburger/carbon-fields",
-            "version": "v3.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/htmlburger/carbon-fields.git",
-                "reference": "47f1538cca6cd2860d1b37a040a42c59eb798d76"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/47f1538cca6cd2860d1b37a040a42c59eb798d76",
-                "reference": "47f1538cca6cd2860d1b37a040a42c59eb798d76",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.20"
-            },
-            "require-dev": {
-                "mockery/mockery": "1.3.6",
-                "phpunit/phpunit": "7.5.20|9.6.3",
-                "yoast/phpunit-polyfills": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Carbon_Fields\\": "core/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "htmlBurger",
-                    "email": "wordpress@htmlburger.com",
-                    "homepage": "https://htmlburger.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Miroslav Mitev",
-                    "email": "mmitev.2create@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Atanas Angelov",
-                    "email": "atanas.angelov.dev@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Georgi Stoyanov",
-                    "email": "stoyanov.gs@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Plamen Kostadinov",
-                    "email": "pkostadinov.2create@gmail.com",
-                    "homepage": "http://plasmen.info/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Stanimir Panchev",
-                    "email": "Stan4omir@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Marin Atanasov",
-                    "email": "contact@marinatanasov.com",
-                    "homepage": "http://marinatanasov.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Siyan Panayotov",
-                    "homepage": "http://siyanpanayotov.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Peter Petrov",
-                    "email": "peter.petrov89@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Stanimir Stoyanov",
-                    "email": "stanimir.k.stoyanov@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Kaloyan Ivanov",
-                    "email": "kaloyanxivanov@gmail.com",
-                    "homepage": "http://vilepixels.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Georgi Popov",
-                    "homepage": "http://magadanski.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "German Velchev",
-                    "email": "germozy@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Rashko Petrov",
-                    "email": "brutalenemy666@gmail.com",
-                    "homepage": "http://errorfactory.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Alexander Panayotov",
-                    "email": "alexander.panayotov@gmail.com",
-                    "homepage": "http://alexanderpanayotov.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Viktor Vasilev",
-                    "email": "liberalcho@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Georgi Georgiev",
-                    "email": "george.georgiev96@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Atanas Vasilev",
-                    "email": "atanasvasilev91@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "WordPress developer-friendly custom fields for post types, taxonomy terms, users, comments, widgets, options and more.",
-            "homepage": "http://carbonfields.net/",
-            "support": {
-                "docs": "http://carbonfields.net/docs/",
-                "email": "wordpress@htmlburger.com",
-                "issues": "https://github.com/htmlburger/carbon-fields/issues",
-                "source": "https://github.com/htmlburger/carbon-fields"
-            },
-            "time": "2023-04-04T08:41:31+00:00"
-        },
-        {
-            "name": "htmlburger/carbon-fields-plugin",
-            "version": "v3.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/htmlburger/carbon-fields-plugin.git",
-                "reference": "c17d60c3ed0b51004f68ca0424ea042db89902a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/carbon-fields-plugin/zipball/c17d60c3ed0b51004f68ca0424ea042db89902a8",
-                "reference": "c17d60c3ed0b51004f68ca0424ea042db89902a8",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "^1.0|^2.0",
-                "htmlburger/carbon-fields": "3.6.0",
-                "php": ">=5.3"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Carbon_Fields_Plugin\\": "core/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "atanas-angelov-dev",
-                    "email": "atanas.angelov.dev@gmail.com"
-                }
-            ],
-            "description": "WordPress plugin loader for Carbon Fields.",
-            "homepage": "http://carbonfields.net/",
-            "support": {
-                "docs": "http://carbonfields.net/docs/",
-                "email": "wordpress@htmlburger.com",
-                "issues": "https://github.com/htmlburger/carbon-fields/issues",
-                "source": "https://github.com/htmlburger/carbon-fields"
-            },
-            "time": "2023-04-04T08:47:30+00:00"
-        },
-        {
             "name": "laravel/serializable-closure",
             "version": "v1.3.1",
             "source": {
@@ -551,35 +278,6 @@
                 "source": "https://github.com/laravel/serializable-closure"
             },
             "time": "2023-07-14T13:56:28+00:00"
-        },
-        {
-            "name": "lpd/og-plugin",
-            "version": "0.0.1",
-            "dist": {
-                "type": "path",
-                "url": "./og-plugin",
-                "reference": "5f1f43dd7b1503238cb742e85cfbe3e68bbe620e"
-            },
-            "require": {
-                "hellonico/timber-dump-extension": "^1.0",
-                "php-di/php-di": "^7.0",
-                "symfony/console": "^6.3",
-                "timber/timber": "2.0.0-rc.1",
-                "twig/string-extra": "^3.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "OgPlugin\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "The core package for plugins made with the Og framework",
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -769,22 +467,27 @@
         },
         {
             "name": "psr/container",
-            "version": "1.1.2",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea"
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/513e0666f7216c7459170d56df27dfcefe1689ea",
-                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Psr\\Container\\": "src/"
@@ -811,99 +514,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/container/issues",
-                "source": "https://github.com/php-fig/container/tree/1.1.2"
+                "source": "https://github.com/php-fig/container/tree/2.0.2"
             },
-            "time": "2021-11-05T16:50:12+00:00"
-        },
-        {
-            "name": "symfony/console",
-            "version": "v6.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "eca495f2ee845130855ddf1cf18460c38966c8b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/eca495f2ee845130855ddf1cf18460c38966c8b6",
-                "reference": "eca495f2ee845130855ddf1cf18460c38966c8b6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/deprecation-contracts": "^2.5|^3",
-                "symfony/polyfill-mbstring": "~1.0",
-                "symfony/service-contracts": "^2.5|^3",
-                "symfony/string": "^5.4|^6.0"
-            },
-            "conflict": {
-                "symfony/dependency-injection": "<5.4",
-                "symfony/dotenv": "<5.4",
-                "symfony/event-dispatcher": "<5.4",
-                "symfony/lock": "<5.4",
-                "symfony/process": "<5.4"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0|2.0|3.0"
-            },
-            "require-dev": {
-                "psr/log": "^1|^2|^3",
-                "symfony/config": "^5.4|^6.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/event-dispatcher": "^5.4|^6.0",
-                "symfony/lock": "^5.4|^6.0",
-                "symfony/process": "^5.4|^6.0",
-                "symfony/var-dumper": "^5.4|^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Console\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Eases the creation of beautiful and testable command line interfaces",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "cli",
-                "command-line",
-                "console",
-                "terminal"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/console/tree/v6.3.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-08-16T10:10:12+00:00"
+            "time": "2021-11-05T16:47:00+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1037,171 +650,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-01-26T09:26:14+00:00"
-        },
-        {
-            "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.28.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "875e90aeea2777b6f135677f618529449334a612"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/875e90aeea2777b6f135677f618529449334a612",
-                "reference": "875e90aeea2777b6f135677f618529449334a612",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "suggest": {
-                "ext-intl": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for intl's grapheme_* functions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "grapheme",
-                "intl",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.28.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-01-26T09:26:14+00:00"
-        },
-        {
-            "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.28.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92",
-                "reference": "8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "suggest": {
-                "ext-intl": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for intl's Normalizer class and related functions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "intl",
-                "normalizer",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1386,337 +834,6 @@
             "time": "2023-01-26T09:26:14+00:00"
         },
         {
-            "name": "symfony/service-contracts",
-            "version": "v2.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "4b426aac47d6427cc1a1d0f7e2ac724627f5966c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/4b426aac47d6427cc1a1d0f7e2ac724627f5966c",
-                "reference": "4b426aac47d6427cc1a1d0f7e2ac724627f5966c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "psr/container": "^1.1",
-                "symfony/deprecation-contracts": "^2.1|^3"
-            },
-            "conflict": {
-                "ext-psr": "<1.1|>=2"
-            },
-            "suggest": {
-                "symfony/service-implementation": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.5-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Contracts\\Service\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Generic abstractions related to writing services",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v2.5.2"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-05-30T19:17:29+00:00"
-        },
-        {
-            "name": "symfony/string",
-            "version": "v6.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/string.git",
-                "reference": "53d1a83225002635bca3482fcbf963001313fb68"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/53d1a83225002635bca3482fcbf963001313fb68",
-                "reference": "53d1a83225002635bca3482fcbf963001313fb68",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-intl-grapheme": "~1.0",
-                "symfony/polyfill-intl-normalizer": "~1.0",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "symfony/translation-contracts": "<2.5"
-            },
-            "require-dev": {
-                "symfony/error-handler": "^5.4|^6.0",
-                "symfony/http-client": "^5.4|^6.0",
-                "symfony/intl": "^6.2",
-                "symfony/translation-contracts": "^2.5|^3.0",
-                "symfony/var-exporter": "^5.4|^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "Resources/functions.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\String\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides an object-oriented API to strings and deals with bytes, UTF-8 code points and grapheme clusters in a unified way",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "grapheme",
-                "i18n",
-                "string",
-                "unicode",
-                "utf-8",
-                "utf8"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/string/tree/v6.3.2"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-07-05T08:41:27+00:00"
-        },
-        {
-            "name": "symfony/translation-contracts",
-            "version": "v3.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/02c24deb352fb0d79db5486c0c79905a85e37e86",
-                "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "3.4-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Contracts\\Translation\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Test/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Generic abstractions related to translation",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.3.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-05-30T17:17:10+00:00"
-        },
-        {
-            "name": "symfony/var-dumper",
-            "version": "v6.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "2027be14f8ae8eae999ceadebcda5b4909b81d45"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2027be14f8ae8eae999ceadebcda5b4909b81d45",
-                "reference": "2027be14f8ae8eae999ceadebcda5b4909b81d45",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/deprecation-contracts": "^2.5|^3",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "symfony/console": "<5.4"
-            },
-            "require-dev": {
-                "ext-iconv": "*",
-                "symfony/console": "^5.4|^6.0",
-                "symfony/http-kernel": "^5.4|^6.0",
-                "symfony/process": "^5.4|^6.0",
-                "symfony/uid": "^5.4|^6.0",
-                "twig/twig": "^2.13|^3.0.4"
-            },
-            "bin": [
-                "Resources/bin/var-dump-server"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "Resources/functions/dump.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\VarDumper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides mechanisms for walking through any arbitrary PHP variable",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.3.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-08-24T14:51:05+00:00"
-        },
-        {
             "name": "timber/timber",
             "version": "2.0.0-rc.1",
             "source": {
@@ -1800,73 +917,6 @@
             "time": "2023-07-31T12:20:20+00:00"
         },
         {
-            "name": "twig/string-extra",
-            "version": "v3.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/string-extra.git",
-                "reference": "7230d630a25e91cd91a2bd8e2f0e872962507eab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/string-extra/zipball/7230d630a25e91cd91a2bd8e2f0e872962507eab",
-                "reference": "7230d630a25e91cd91a2bd8e2f0e872962507eab",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/string": "^5.4|^6.0",
-                "symfony/translation-contracts": "^1.1|^2|^3",
-                "twig/twig": "^2.7|^3.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^5.4|^6.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Twig\\Extra\\String\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "A Twig extension for Symfony String",
-            "homepage": "https://twig.symfony.com",
-            "keywords": [
-                "html",
-                "string",
-                "twig",
-                "unicode"
-            ],
-            "support": {
-                "source": "https://github.com/twigphp/string-extra/tree/v3.7.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-07-29T15:34:56+00:00"
-        },
-        {
             "name": "twig/twig",
             "version": "v3.7.1",
             "source": {
@@ -1938,7 +988,180 @@
             "time": "2023-08-28T11:09:02+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "hellonico/timber-dump-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nlemoine/timber-dump-extension.git",
+                "reference": "05d0ea9e13c044a3b78926ab4695b28e739aa205"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nlemoine/timber-dump-extension/zipball/05d0ea9e13c044a3b78926ab4695b28e739aa205",
+                "reference": "05d0ea9e13c044a3b78926ab4695b28e739aa205",
+                "shasum": ""
+            },
+            "require": {
+                "hellonico/twig-dump-extension": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "functions.php"
+                ],
+                "psr-4": {
+                    "HelloNico\\Timber\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Lemoine",
+                    "email": "dev@helloni.co",
+                    "homepage": "https://github.com/nlemoine"
+                }
+            ],
+            "description": "Provides Symfony VarDumper component for Timber",
+            "homepage": "https://github.com/nlemoine/timber-dump-extension",
+            "support": {
+                "issues": "https://github.com/nlemoine/timber-dump-extension/issues",
+                "source": "https://github.com/nlemoine/timber-dump-extension/tree/master"
+            },
+            "time": "2019-03-05T10:25:36+00:00"
+        },
+        {
+            "name": "hellonico/twig-dump-extension",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nlemoine/twig-dump-extension.git",
+                "reference": "fb5fbea20032254d32aaaba5fc1113a4a4877aaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nlemoine/twig-dump-extension/zipball/fb5fbea20032254d32aaaba5fc1113a4a4877aaf",
+                "reference": "fb5fbea20032254d32aaaba5fc1113a4a4877aaf",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/var-dumper": "^4.2 || ^5.0 || ^6.0",
+                "twig/twig": "^2.4 || ^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HelloNico\\Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Lemoine",
+                    "email": "nico@niconico.fr",
+                    "homepage": "https://github.com/nlemoine"
+                }
+            ],
+            "description": "VarDumper Twig extension",
+            "homepage": "https://github.com/nlemoine/twig-dump-extension",
+            "support": {
+                "issues": "https://github.com/nlemoine/twig-dump-extension/issues",
+                "source": "https://github.com/nlemoine/twig-dump-extension/tree/1.2.0"
+            },
+            "time": "2022-07-12T15:30:32+00:00"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v6.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "3d9999376be5fea8de47752837a3e1d1c5f69ef5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3d9999376be5fea8de47752837a3e1d1c5f69ef5",
+                "reference": "3d9999376be5fea8de47752837a3e1d1c5f69ef5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/console": "<5.4"
+            },
+            "require-dev": {
+                "ext-iconv": "*",
+                "symfony/console": "^5.4|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0",
+                "symfony/process": "^5.4|^6.0",
+                "symfony/uid": "^5.4|^6.0",
+                "twig/twig": "^2.13|^3.0.4"
+            },
+            "bin": [
+                "Resources/bin/var-dump-server"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides mechanisms for walking through any arbitrary PHP variable",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/var-dumper/tree/v6.3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-09-12T10:11:35+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
