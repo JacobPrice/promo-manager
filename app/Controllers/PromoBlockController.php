@@ -125,19 +125,13 @@ class PromoBlockController
                             ],
                         ];
                     }
+                    /**
+                     *  This will pull from the theme first and then the plugin
+                     *  referece PluginsController@timber_locations
+                     */
+                    $template = 'promo-block.twig';
 
-                    // get theme directory
-                    $theme = wp_get_theme();
-                    $theme_dir = $theme->get_stylesheet_directory();
-                    // root plugin directory
-                 
-                    if (file_exists($theme_dir . '/promo-block.twig')) {
-                    $template = $theme_dir . '/promo-block.twig';
-                    } else {
-                    $template = config('plugin.dir') . 'resources/blocks/promo-block.twig';
-                    }
-                    // include the template with the promos
-                    Timber::render(
+                    $contents = Timber::render(
                         $template,
                         [
                             'promos' => $promos,
@@ -145,6 +139,7 @@ class PromoBlockController
                             'is_mobile' => $is_mobile,
                         ]
                     );
+
                 }
             );
     }

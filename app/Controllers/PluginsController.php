@@ -11,8 +11,8 @@ class PluginsController {
 
     public function timber_locations($paths) {
             $paths[] = [
-                config('plugin.dir') . 'resources/views',
-                config('plugin.dir') . 'resources/blocks',
+                config('theme.dir'),
+                config('plugin.dir') . 'resources/blocks'
             ];
             return $paths;
     }
