@@ -96,7 +96,7 @@ class PromoBlockController
                         $promo_link_is_external = carbon_get_post_meta($promo->ID, 'promo_link_is_external');
                         $promo_global_link_text = carbon_get_theme_option('promo_global_link_text');
                         $promo_global_link_is_external = carbon_get_theme_option('promo_global_link_is_external');
-
+                        $promo_global_link_external = carbon_get_theme_option('promo_global_link_external');
                         if ($promo_link_text) {
                             $promo->promo_link_text = $promo_link_text;
                         } else if ($promo_global_link_text) {
@@ -107,11 +107,14 @@ class PromoBlockController
 
                         if ($promo_link_is_external) {
                             $promo->promo_link_is_external = $promo_link_is_external;
+                            $promo->promo_link = $promo_link_is_external;
                         } else if ($promo_global_link_is_external) {
-                            $promo->promo_link_is_external = $promo_global_link_is_external;
+                            $promo->promo_link = $promo_global_link_external;
                         } else {
-                            $promo->promo_link_is_external = false;
+                            $promo->promo_link = get_permalink($promo->ID);
                         }
+
+
 
                         $promo->promo_start_date = carbon_get_post_meta($promo->ID, 'promo_start_date');
                         $promo->promo_end_date = carbon_get_post_meta($promo->ID, 'promo_end_date');

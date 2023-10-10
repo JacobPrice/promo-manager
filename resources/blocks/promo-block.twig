@@ -1,6 +1,5 @@
 {% if promos|length >= 1 %}
 
-
 	{% if promo_layout == "slider" and promos|length > 1 %}
 
 		<div class="swiper-container">
@@ -10,9 +9,9 @@
 					{% for promo in promos %}
 						<div class="swiper-slide">
 							{% if is_mobile %}
-								<a href="">{{promo.images.mobile}}</a>
+								<a href="{{promo.promo_link}}">{{promo.images.mobile}}</a>
 							{% else %}
-								<a href="">{{promo.images.desktop[promo.promo_desktop_image_type]}}</a>
+								<a href="{{promo.promo_link}}">{{promo.images.desktop[promo.promo_desktop_image_type]}}</a>
 							{% endif %}
 						</div>
 					{% endfor %}
@@ -28,9 +27,9 @@
 			{% for promo in promos %}
 				<div class="lpd-promo">
 					{% if is_mobile %}
-						{{promo.images.mobile}}
+						<a href="{{promo.promo_link}}">{{promo.images.mobile}}</a>
 					{% else %}
-						{{promo.images.desktop[promo.promo_desktop_image_type]}}
+						<a href="{{promo.promo_link}}">{{promo.images.desktop[promo.promo_desktop_image_type]}}</a>
 					{% endif %}
 				</div>
 			{% endfor %}
